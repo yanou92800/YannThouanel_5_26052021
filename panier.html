@@ -36,6 +36,71 @@
         </div>
       </div>
     </header>
+    <main>
+      <div class="container visually-hidden" id="basketFull">
+        <h1 class="text-center m-5">Mon panier</h1>
+        <div>
+          <table class="tableau-style bg-panier col-md-12 col-lg-12 col-12" >
+            <thead class="bg-card">
+              <tr>
+                <th>Produit</th>
+                <th>Prix a l'unité</th>
+                <th>Quantité</th>
+                <th>Prix total</th>
+                <th>Supprimer</th>
+              </tr>
+            </thead>
+            <tbody id="boardBasket">
+            </tbody>
+          </table>
+          <div class="container p-1 total-panier" >
+            <div class="d-flex justify-content-around">
+              <div>
+                <p class="fts-panier">Total Panier</p>
+              </div>
+              <div>
+                <p class="fts-panier"><span id="totalPriceBasket"></span> €</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form class="w-auto mt-5" id="formClient">
+          <div class="row">
+            <div class="col-lg-6 col-md-6">
+              <label for="prenom">Prénom</label>
+              <input type="text" name="prénom" id="prenom" class="form-control" placeholder="prénom" minlength="1" maxlength="26" required pattern="[A-Za-z]{1,32}">
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <label for="nom">Nom</label>
+              <input type="text" name="nom" id="nom" class="form-control" placeholder="nom" minlength="1" maxlength="26" required pattern="[A-Za-z]{1,32}">
+            </div>
+            <div class="col-12 col-lg-7 col-md-7">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" name="email" class="form-control" minlength="6" maxlength="50" required placeholder="nom.prenom@exemple.com">
+            </div>
+            <div class="col-12 col-lg-9 col-md-9">
+              <label for="adresse" class="form-label">Adresse</label>
+              <input type="text" id="adresse" name="adresse" class="form-control" minlength="7" maxlength="75" placeholder="Adresse" required pattern="^[0-9][A-Za-z0-9 ]{7,75}">
+            </div>
+            <div class="col-12 col-lg-5 col-md-5">
+              <label for="ville" class="form-label">Ville</label>
+              <input type="text" id="ville" name="ville" class="form-control" minlength="1" maxlength="26" placeholder="Ville" required pattern="\D+">
+            </div>
+          </div>
+          <div class="col-12 mt-3">
+            <button class="btn btn-outline-primary" type="submit" id="formSubmit">Valider</button>
+          </div>
+        </form>
+      </div>
+      <div class="container-fluid hidden" id="basketEmpty">
+        <div class="row">
+          <div class="text-center col-12">
+            <p><strong>Votre Panier est vide</strong></p>
+            <i class="far fa-frown-open"></i>
+          </div>
+        </div>
+      </div>
+    </main>
     <footer></footer>
   </body>
 </html>
