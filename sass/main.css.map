@@ -1,0 +1,22 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "main.scss",
+        "Utils/_variables.scss",
+        "Utils/_mixins.scss",
+        "Utils/_keyframes.scss",
+        "Base/_base.scss",
+        "Composants/_buttons.scss",
+        "Composants/_loader.scss",
+        "Composants/_heart.scss",
+        "Layout/_container.scss",
+        "Layout/_header.scss",
+        "Layout/_home.scss",
+        "Layout/_restaurant.scss",
+        "Layout/_menu.scss",
+        "Layout/_footer.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}
