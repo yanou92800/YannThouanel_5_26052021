@@ -7,16 +7,16 @@
   })();
   
   function getAllArticles() {
-    return fetch("http://localhost:3000/api/cameras")
-      .then(function (res) {
-        return res.json();
+    return fetch("http://localhost:3000/api/cameras") //fonction fetch pour aller chercher les articles de l'api
+      .then(function (res) { 
+        return res.json(); // Retourne le json de l'api
       })
-      .catch(function (error) {
+      .catch(function (error) { //retourne une erreur
         alert(error);
       });
   }
   
-  function displayArticle(article) { //Fonction pour rajouter article avec contenu spécifique
+  function displayArticle(article) { //Fonction pour afficher article avec contenu spécifique
     const col = document.createElement("div");
     col.classList.add("col-lg-4", "container", "col-md-6", "col-sm-12", "my-3");
   
@@ -79,22 +79,22 @@
     if (localStorage.getItem(storageProductId)) { // si tu trouves l'ID
       return parseInt(localStorage.getItem(storageProductId)); //retourne la valeur
     } else {
-      return 0;
+      return 0; // retourne 0 si vide
   }
   };
   //  fonction pour additionner le nombre total d'articles dans le panier 
   function upProduct() {
     let numberProductBasket = document.getElementById("numberProductBasket");
     if (localStorage.length < 1) {
-      numberProductBasket.textContent = "";
+      numberProductBasket.textContent = ""; // si panier inférieur à 1 rien d'affiché
     } else {
-      let valueBasket = 0;
+      let valueBasket = 0; // valeur du panier
   
       for (let i = 0; i < localStorage.length; i++) {
-        valueBasket += parseInt(localStorage.getItem(localStorage.key(i)));
+        valueBasket += parseInt(localStorage.getItem(localStorage.key(i))); // retourne la valeur +1 (un entier) du serveur à chaque ajout
       }
       if (valueBasket !== 0) {
-        numberProductBasket.textContent = valueBasket;
+        numberProductBasket.textContent = valueBasket; //si valeur basket différent de 0 afficher nouvelle valeur basket
       }
     }
   };

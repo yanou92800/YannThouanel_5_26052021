@@ -1,62 +1,73 @@
 const apiUrl = "http://localhost:3000/api/cameras";
 
 if (0 >= localStorage.length) {
-  let basketEmpty = document.getElementById("basketEmpty");
+  const basketEmpty = document.getElementById("basketEmpty"); //Si panier vide supprimer le hidden du "panier vide"
   basketEmpty.classList.remove("hidden");
+  basketFull.classList.add("hidden");
 } else {
   let priceTotalBasket = 0;
-  let basketFull = document.getElementById("basketFull");
+  const basketFull = document.getElementById("basketFull"); // Sinon afficher le tableau du panier
   basketFull.classList.remove("visually-hidden");
-  for (let i = 0; i < localStorage.length; i++) {
+  for (let i = 0; i < localStorage.length; i++) { // Créer boucle, pour chaque ajout dans panier, rajouter article dans tableau
     fetch(apiUrl + `/${localStorage.key(i)}`)
       .then((res) => res.json())
       .then((article) => {
-        let amountProduct = parseInt(localStorage.getItem(localStorage.key(i)));
-        priceTotalBasket = priceTotalBasket +=
-          (article.price * amountProduct) / 100;
+        const key = localStorage.key(i);
+        const amountProduct = parseInt(localStorage.getItem(key));
+        priceTotalBasket = priceTotalBasket += (article.price * amountProduct) / 100;
 
-        let lineBoard = document.createElement("tr");
+        const lineBoard = document.createElement("tr");
 
-        let tdProduct = document.createElement("td");
+        const tdProduct = document.createElement("td");
         tdProduct.innerHTML = article.name;
-        let tdPriceUnitary = document.createElement("td");
+        tdProduct.classList.add("text-center");
+        const tdImage = document.createElement("img"); // Créer img
+        tdImage.src = article.imageUrl; // Mettre le lien serveur de l'image
+        tdImage.alt = "Image caméra"; // Ajout alt à image
+        tdImage.setAttribute("height", "100");
+        const tdPriceUnitary = document.createElement("td");
         tdPriceUnitary.innerHTML = article.price / 100;
-        let tdAmount = document.createElement("td");
+        tdPriceUnitary.classList.add("text-center");
+        const tdAmount = document.createElement("td");
         tdAmount.innerHTML = amountProduct;
-        let tdpriceTotal = document.createElement("td");
-        tdpriceTotal.innerHTML = (article.price * amountProduct) / 100;
-        let tdRemove = document.createElement("td");
-        let tdBtn = document.createElement("button");
-        tdBtn.classList.add("btn", "btn-danger", "fts");
-        tdBtn.setAttribute("id", localStorage.key(i));
-        let tdIcon = document.createElement("i");
-        tdIcon.classList.add("fas", "fa-trash-alt");
+        tdAmount.classList.add("text-center");
+        const tdPriceTotal = document.createElement("td");
+        tdPriceTotal.innerHTML = (article.price * amountProduct) / 100;
+        tdPriceTotal.classList.add("text-center");
+        const tdRemove = document.createElement("td");
+        tdRemove.classList.add("text-center");
+        const tdBtn = document.createElement("button");
+        tdBtn.classList.add("btn", "btn-dark", "fts");
+        tdBtn.setAttribute("id", key);
+        const tdIcon = document.createElement("i");
+        tdIcon.classList.add("far", "fa-trash-alt");
 
         tdBtn.append(tdIcon);
 
         tdRemove.append(tdBtn);
 
         lineBoard.append(tdProduct);
+        lineBoard.append(tdImage);
         lineBoard.append(tdPriceUnitary);
         lineBoard.append(tdAmount);
-        lineBoard.append(tdpriceTotal);
+        lineBoard.append(tdPriceTotal);
         lineBoard.append(tdRemove);
 
-        let board = document.getElementById("boardBasket");
+        const board = document.getElementById("boardBasket");
         board.append(lineBoard);
 
-        let totalPriceBasket = document.getElementById("totalPriceBasket");
+        const totalPriceBasket = document.getElementById("totalPriceBasket");
         totalPriceBasket.innerHTML = priceTotalBasket;
 
-        let btnId = document.getElementById(localStorage.key(i));
+        const btnId = document.getElementById(key);
         btnId.addEventListener("click", function () {
-          localStorage.removeItem(localStorage.key(i));
+          localStorage.removeItem(key);
           board.removeChild(lineBoard);
           priceTotalBasket =
             priceTotalBasket - (article.price * amountProduct) / 100;
           totalPriceBasket.innerHTML = priceTotalBasket;
           if (0 >= localStorage.length) {
-            let basketFull = document.getElementById("basketFull");
+            const basketFull = document.getElementById("basketFull"); //Si article dans panier, ajouter hidden dans panier full et supprimer hidden de panier vide
             basketFull.classList.add("hidden");
             basketEmpty.classList.remove("hidden");
           }
@@ -67,12 +78,13 @@ if (0 >= localStorage.length) {
       });
   }
 }
-// Creation de la requete post en utilisant fetch
+
+// Creation de la requete post en utilisant fetch pour le formulaire
 // initialisation
 let contact = {};
 let products = [];
 // recuperation du formulaire + ecoute au submit
-let formClient = document.getElementById("formClient");
+const formClient = document.getElementById("formClient");
 formClient.addEventListener("submit", function (form) {
   form.preventDefault();
   contact = {
@@ -94,7 +106,7 @@ formClient.addEventListener("submit", function (form) {
   })
     .then((res) => res.json())
     .then((article) => {
-      let priceTotal = totalPriceBasket.innerHTML;
+      const priceTotal = totalPriceBasket.innerHTML;
       localStorage.clear();
       localStorage.setItem("orderId", `${article.orderId}`);
       localStorage.setItem("priceTotal", `${priceTotal}`);

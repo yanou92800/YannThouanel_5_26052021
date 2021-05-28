@@ -1,4 +1,4 @@
-if(localStorage.getItem("orderId")) {
+if (localStorage.getItem("orderId")) {
     let CommandTrue = document.getElementById("containerCommandTrue");
     CommandTrue.classList.remove("hidden");
     let pCommandTrue = document.getElementById("pCommandTrue");

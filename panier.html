@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/bootstrap.css">
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
-    <script type="module" src="public/js/index.js" defer></script>
+    <script src="public/js/panier.js" defer></script>
     <title>Orinoco</title>
   </head>
   <body>
@@ -28,7 +28,7 @@
                   <a class="nav-link active" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="panier.html">Panier <span class="badge bg-black" id="numberProductBasket"></span></a>
+                  <a class="nav-link active" href="panier.html">Panier <i class="fas fa-shopping-basket"></i><span class="badge bg-black" id="numberProductBasket"></span></a>
                 </li>
               </ul>
             </div>
@@ -40,14 +40,15 @@
       <div class="container visually-hidden" id="basketFull">
         <h1 class="text-center m-5">Mon panier</h1>
         <div>
-          <table class="tableau-style bg-panier col-md-12 col-lg-12 col-12" >
+          <table class="tableau-style bg-panier col-12 border" >
             <thead class="bg-card">
               <tr>
-                <th>Produit</th>
-                <th>Prix a l'unité</th>
-                <th>Quantité</th>
-                <th>Prix total</th>
-                <th>Supprimer</th>
+                <th class="text-center">Produit</th>
+                <th width="1"></th>
+                <th class="text-center">Prix a l'unité</th>
+                <th class="text-center">Quantité</th>
+                <th class="text-center">Prix total</th>
+                <th class="text-center">Supprimer</th>
               </tr>
             </thead>
             <tbody id="boardBasket">
