@@ -21,10 +21,10 @@
     col.classList.add("col-lg-4", "container", "col-md-6", "col-sm-12", "my-3");
   
     const card = document.createElement("div"); // Créer div
-    card.classList.add("card"); // Ajouter à la div une classe card
+    card.classList.add("card", "p-1"); // Ajouter à la div une classe card
   
     const cardImage = document.createElement("img"); // Créer img
-    cardImage.classList.add("card__image"); // Ajouter class image
+    cardImage.classList.add("imageProduct"); // Ajouter class image
     cardImage.src = article.imageUrl; // Mettre le lien serveur de l'image
     cardImage.alt = "Image caméra"; // Ajout alt à image
     cardImage.href = "produit.html?id=" + article._id;
@@ -45,12 +45,12 @@
     cardBtn.classList.add("card__btn", "d-flex", "justify-content-between", "align-items-center", "m-3");
   
     const cardBtnView = document.createElement("a");
-    cardBtnView.classList.add("card__btn__view", "btn", "btn-outline-primary");
+    cardBtnView.classList.add("card__btn__view", "btn", "btn-outline-dark");
     cardBtnView.innerText = "Voir le produit";
     cardBtnView.setAttribute("href", "produit.html?id=" + article._id);
   
     const cardBtnBuy = document.createElement("button");
-    cardBtnBuy.classList.add("card__btn__buy", "btn", "btn-outline-primary");
+    cardBtnBuy.classList.add("card__btn__buy", "btn", "btn-outline-dark");
     cardBtnBuy.innerText = "Acheter";
     cardBtnBuy.setAttribute("id", article._id);
   
@@ -78,9 +78,8 @@
   function searchProductStorage(storageProductId) { //recherche produit id du serveur
     if (localStorage.getItem(storageProductId)) { // si tu trouves l'ID
       return parseInt(localStorage.getItem(storageProductId)); //retourne la valeur
-    } else {
-      return 0; // retourne 0 si vide
-  }
+    } 
+    return 0; // retourne 0 si vide
   };
   //  fonction pour additionner le nombre total d'articles dans le panier 
   function upProduct() {

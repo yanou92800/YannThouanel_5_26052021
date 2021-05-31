@@ -20,24 +20,25 @@ if (0 >= localStorage.length) {
 
         const tdProduct = document.createElement("td");
         tdProduct.innerHTML = article.name;
-        tdProduct.classList.add("text-center");
+        tdProduct.classList.add("text-center", "border");
         const tdImage = document.createElement("img"); // Créer img
         tdImage.src = article.imageUrl; // Mettre le lien serveur de l'image
         tdImage.alt = "Image caméra"; // Ajout alt à image
         tdImage.setAttribute("height", "100");
+        tdImage.classList.add("p-1", "border-top");
         const tdPriceUnitary = document.createElement("td");
         tdPriceUnitary.innerHTML = article.price / 100;
-        tdPriceUnitary.classList.add("text-center");
+        tdPriceUnitary.classList.add("text-center", "border");
         const tdAmount = document.createElement("td");
         tdAmount.innerHTML = amountProduct;
-        tdAmount.classList.add("text-center");
+        tdAmount.classList.add("text-center", "border");
         const tdPriceTotal = document.createElement("td");
         tdPriceTotal.innerHTML = (article.price * amountProduct) / 100;
-        tdPriceTotal.classList.add("text-center");
+        tdPriceTotal.classList.add("text-center", "border");
         const tdRemove = document.createElement("td");
-        tdRemove.classList.add("text-center");
+        tdRemove.classList.add("text-center" , "border");
         const tdBtn = document.createElement("button");
-        tdBtn.classList.add("btn", "btn-dark", "fts");
+        tdBtn.classList.add("btn", "btn-dark");
         tdBtn.setAttribute("id", key);
         const tdIcon = document.createElement("i");
         tdIcon.classList.add("far", "fa-trash-alt");

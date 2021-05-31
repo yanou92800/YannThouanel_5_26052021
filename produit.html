@@ -14,34 +14,42 @@
   <body>
     <header>
       <div class="bg-light container-fluid">
-        <div class="row">
-          <nav class="navbar navbar-expand-lg navbar-light container">
-            <a href="index.html">
-              <img src="./images/logo.png" alt="logo orinoco" width="200">
-            </a>
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="panier.html">Panier <i class="fas fa-shopping-basket"></i><span class="badge bg-black" id="numberProductBasket"></span></a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
+        <nav class="row navbar navbar-expand-lg navbar-light">
+          <a href="index.html">
+            <img src="./images/logo.png" alt="logo orinoco" width="200">
+          </a>
+          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <ul class="navbar-nav collapse navbar-collapse justify-content-end"id="navbarTogglerDemo01">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="panier.html">Panier <i class="fas fa-shopping-basket"></i><span class="badge bg-black" id="numberProductBasket"></span></a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
     <main>
       <h1 class="text-center my-5"><strong>Caméras vintage</strong></h1>
-      <div class="container" id="container">
-        <div id="row" class="row border"></div>
+      <div id="container" class="container bg-light">
+        <div id="row" class="flex-wrap row p-1 border"></div>
       </div>
     </main>
-    <footer></footer>
+    <footer>
+      <div class="container-fluid bg-light p-5">
+        <div class="container">
+          <div>
+            <ul class="list-inline text-center">
+              <li class="list-inline-item"><a href="" class="text-dark">Nous contacter</a></li>
+              <li class="list-inline-item"><a href="" class="text-dark">À propos</a></li>
+              <li class="list-inline-item"><a href="" class="text-dark">Conditions générales</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

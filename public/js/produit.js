@@ -11,22 +11,22 @@ fetch("http://localhost:3000/api/cameras" + `/${productID}`)
   })
   .then(function(article){ // On récupère le produit et intégre le html
     row.innerHTML = `
-            <div class="col-6 p-0">
-              <img class="coverImg" src="${article.imageUrl}" alt="" width="476" height="375">
+            <div class="col-lg-5 col-0 px-0">
+              <img class="imgProduct" src="${article.imageUrl}" alt="">
             </div>
-            <div class="col-6">
+            <div class="col-lg-7" data-children-count="2">
               <h1 class="h3 text-center my-3">${article.name}</h1>
               <p class="col-lg-11 mt-4 px-0">${article.description}</p>
               <p>${article.price / 100} €</p>
               <select class="form-select  mb-3 mt-4" id="selectLense"></select>
               <div class="row mt-5 justify-content-between">
                 <div class="col-lg-3 col-md-3 mb-3 d-flex" id="choiceTotal">
-                  <button class="btn btn-primary btn-purple" type="button" id="Down">-</button>
+                  <button class="btn btn-dark" type="button" id="Down">-</button>
                   <input id="totalProduct" type="text" class="form-control text-center" aria-label="Quantité de produit" value="1"  minlength="1" maxlength="2">
-                  <button class="btn btn-primary btn-purple" type="button" id="Up">+</button>
+                  <button class="btn btn-dark" type="button" id="Up">+</button>
                 </div>
                 <div class="col-lg-4">
-                  <button type="submit" class="btn btn-primary btn-purple p-2" id="${productID}">Ajouter au panier</button>
+                  <button type="submit" class="btn btn-dark p-2" id="${productID}">Ajouter au panier</button>
                 </div>
             </div>`;
 
@@ -39,9 +39,9 @@ fetch("http://localhost:3000/api/cameras" + `/${productID}`)
       selectElement.append(optionElement); // on met les optionElement dans selectElement
     }
     // creation de la gestion du nombre de d'article
-    let totalProduct = document.getElementById("totalProduct"); // on recupere notre element html et on le nomme
+    const totalProduct = document.getElementById("totalProduct"); // on recupere notre element html et on le nomme
 
-    let btnUp = document.getElementById("Up"); // on recupere notre bouton Up et on le nome btnUp
+    const btnUp = document.getElementById("Up"); // on recupere notre bouton Up et on le nome btnUp
     btnUp.addEventListener("click", function () {
       // on ecoute le boutton avec addEventListener et on lui dit que des que quelqu'un click dessus, cela active la function
       if (totalProduct.value < 99) {
@@ -50,7 +50,7 @@ fetch("http://localhost:3000/api/cameras" + `/${productID}`)
       }
     });
 
-    let btnDown = document.getElementById("Down"); // On va chercher l'id
+    const btnDown = document.getElementById("Down"); // On va chercher l'id
     btnDown.addEventListener("click", function () { // a chaque clique
       if (totalProduct.value > 1) { //si supérieur à 1
         totalProduct.value--; // On enlève 1
@@ -75,13 +75,12 @@ fetch("http://localhost:3000/api/cameras" + `/${productID}`)
  function searchProductStorage(storageProductId) { //recherche produit id du serveur
   if (localStorage.getItem(storageProductId)) { // si tu trouves l'ID
     return parseInt(localStorage.getItem(storageProductId)); //retourne la valeur
-  } else {
-    return 0; // retourne 0 si vide
-}
+  } 
+  return 0; // retourne 0 si vide
 };
 //  fonction pour additionner le nombre total d'articles dans le panier 
 function upProduct() {
-  let numberProductBasket = document.getElementById("numberProductBasket");
+  const numberProductBasket = document.getElementById("numberProductBasket");
   if (localStorage.length < 1) {
     numberProductBasket.textContent = ""; // si panier inférieur à 1 rien d'affiché
   } else {
