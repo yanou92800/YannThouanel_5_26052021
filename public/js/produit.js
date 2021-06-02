@@ -17,7 +17,7 @@ fetch("http://localhost:3000/api/cameras" + `/${productID}`)
             <div class="col-lg-7" data-children-count="2">
               <h1 class="h3 text-center my-3">${article.name}</h1>
               <p class="col-lg-11 mt-4 px-0">${article.description}</p>
-              <p>${article.price / 100} €</p>
+              <p><strong>${article.price / 100} €</strong></p>
               <select class="form-select  mb-3 mt-4" id="selectLense"></select>
               <div class="row mt-5 justify-content-between">
                 <div class="col-lg-3 col-md-3 mb-3 d-flex" id="choiceTotal">

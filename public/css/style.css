@@ -14,4 +14,14 @@
   height: 100%;
 }
 
+@media (max-width: 470px) {
+  table {
+    font-size: 2.5vw;
+  }
+  table .btn-dark {
+    width: 8vw;
+    padding: 1vw;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

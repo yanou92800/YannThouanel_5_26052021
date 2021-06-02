@@ -31,26 +31,28 @@
     cardImage.setAttribute("height", "210");
   
     const cardBody = document.createElement("div");
-    cardBody.classList.add("card__body", "m-3");
+    cardBody.classList.add("m-3");
   
     const cardBodyName = document.createElement("h2"); // Créer h2
-    cardBodyName.classList.add("card__body__name"); // Ajouter class card__name
     cardBodyName.innerText = article.name; // Mettre le lien serveur du name
   
     const cardBodyDescription = document.createElement("p"); // Créer p
-    cardBodyDescription.classList.add("card__body__description"); // Ajouter class card__description
     cardBodyDescription.innerText = article.description; // Mettre le lien serveur description
+
+    const cardPrice = document.createElement("strong");
+    cardPrice.innerText = `${article.price / 100} €`;
+    cardPrice.classList.add("strong");
   
     const cardBtn = document.createElement("div");
-    cardBtn.classList.add("card__btn", "d-flex", "justify-content-between", "align-items-center", "m-3");
+    cardBtn.classList.add("d-flex", "justify-content-between", "align-items-center", "m-3");
   
     const cardBtnView = document.createElement("a");
-    cardBtnView.classList.add("card__btn__view", "btn", "btn-outline-dark");
+    cardBtnView.classList.add("btn", "btn-outline-dark");
     cardBtnView.innerText = "Voir le produit";
     cardBtnView.setAttribute("href", "produit.html?id=" + article._id);
   
     const cardBtnBuy = document.createElement("button");
-    cardBtnBuy.classList.add("card__btn__buy", "btn", "btn-outline-dark");
+    cardBtnBuy.classList.add("btn", "btn-outline-dark");
     cardBtnBuy.innerText = "Acheter";
     cardBtnBuy.setAttribute("id", article._id);
   
@@ -61,6 +63,7 @@
     card.append(cardBody);
     cardBody.append(cardBodyName); // div name enfant de card
     cardBody.append(cardBodyDescription); // div description enfant de description
+    cardBody.append(cardPrice);
     card.append(cardBtn);
     cardBtn.append(cardBtnView);
     cardBtn.append(cardBtnBuy);
