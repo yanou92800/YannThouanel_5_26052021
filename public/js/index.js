@@ -56,17 +56,17 @@
     cardBtnBuy.innerText = "Acheter";
     cardBtnBuy.setAttribute("id", article._id);
   
-    container.append(row);
-    row.append(col);
-    col.append(card); // card enfant de container
-    card.append(cardImage); // img enfant de card
-    card.append(cardBody);
-    cardBody.append(cardBodyName); // div name enfant de card
-    cardBody.append(cardBodyDescription); // div description enfant de description
-    cardBody.append(cardPrice);
-    card.append(cardBtn);
-    cardBtn.append(cardBtnView);
-    cardBtn.append(cardBtnBuy);
+    container.appendChild(row);
+    row.appendChild(col);
+    col.appendChild(card); // card enfant de container
+    card.appendChild(cardImage); // img enfant de card
+    card.appendChild(cardBody);
+    cardBody.appendChild(cardBodyName); // div name enfant de card
+    cardBody.appendChild(cardBodyDescription); // div description enfant de description
+    cardBody.appendChild(cardPrice);
+    card.appendChild(cardBtn);
+    cardBtn.appendChild(cardBtnView);
+    cardBtn.appendChild(cardBtnBuy);
   
     document.getElementById(article._id).addEventListener("click", function () {
       let numberProduct = searchProductStorage(article._id); // on lui dit que nombre produit est egale au nombre de la function apeller (donc la valeur de chaque key)

@@ -1,9 +1,11 @@
 const apiUrl = "http://localhost:3000/api/cameras";
 
+//Fonction pour afficher Formulaire et panier
+function showBasket () {
 if (0 >= localStorage.length) {
   const basketEmpty = document.getElementById("basketEmpty"); //Si panier vide supprimer le hidden du "panier vide"
   basketEmpty.classList.remove("hidden");
-  basketFull.classList.add("hidden");
+  basketFull.classList.add("hidden"); //rendre invisible le panier
 } else {
   let priceTotalBasket = 0;
   const basketFull = document.getElementById("basketFull"); // Sinon afficher le tableau du panier
@@ -43,19 +45,19 @@ if (0 >= localStorage.length) {
         const tdIcon = document.createElement("i");
         tdIcon.classList.add("far", "fa-trash-alt");
 
-        tdBtn.append(tdIcon);
+        tdBtn.appendChild(tdIcon);
 
-        tdRemove.append(tdBtn);
+        tdRemove.appendChild(tdBtn);
 
-        lineBoard.append(tdProduct);
-        lineBoard.append(tdImage);
-        lineBoard.append(tdPriceUnitary);
-        lineBoard.append(tdAmount);
-        lineBoard.append(tdPriceTotal);
-        lineBoard.append(tdRemove);
+        lineBoard.appendChild(tdProduct);
+        lineBoard.appendChild(tdImage);
+        lineBoard.appendChild(tdPriceUnitary);
+        lineBoard.appendChild(tdAmount);
+        lineBoard.appendChild(tdPriceTotal);
+        lineBoard.appendChild(tdRemove);
 
         const board = document.getElementById("boardBasket");
-        board.append(lineBoard);
+        board.appendChild(lineBoard);
 
         const totalPriceBasket = document.getElementById("totalPriceBasket");
         totalPriceBasket.innerHTML = priceTotalBasket;
@@ -79,12 +81,16 @@ if (0 >= localStorage.length) {
       });
   }
 }
+}
+showBasket();
 
-// Creation de la requete post en utilisant fetch pour le formulaire
-// initialisation
-let contact = {};
+// on ajoute dans le tableau panier, chaque id de produits trouvés dans le localStorage
 let products = [];
-// recuperation du formulaire + ecoute au submit
+for (let i = 0; i < localStorage.length; i++) {
+ products.push(localStorage.key(i));
+}
+
+let contact = {}
 const formClient = document.getElementById("formClient");
 formClient.addEventListener("submit", function (form) {
   form.preventDefault();
@@ -95,11 +101,7 @@ formClient.addEventListener("submit", function (form) {
     city: formClient.elements.ville.value,
     email: formClient.elements.email.value,
   };
-  // on ajoute dans le board products, chaque id de produits trouver dans le localStorage
-  for (let i = 0; i < localStorage.length; i++) {
-    products.push(localStorage.key(i));
-  }
-  // envoi au server avec fetch en passant par la methode post
+  // envoi au server avec fetch en passant par la methode post son identifiant contact et ses produits
   fetch(apiUrl + "/order", {
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -112,5 +114,7 @@ formClient.addEventListener("submit", function (form) {
       localStorage.setItem("orderId", `${article.orderId}`);
       localStorage.setItem("priceTotal", `${priceTotal}`);
       window.location.assign("./commande.html");
+      // test console.log(localStorage.getItem("orderId"));
+      // test console.log(localStorage.getItem("priceTotal"));
     });
 });

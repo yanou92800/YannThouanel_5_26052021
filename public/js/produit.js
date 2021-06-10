@@ -36,7 +36,7 @@ fetch("http://localhost:3000/api/cameras" + `/${productID}`)
       const optionElement = document.createElement("option"); // on nomme les option qu'il y aura dedans option et on la créé avec createElement
       optionElement.setAttribute("value", `${article.lenses[i]}`); // on lui rajoute les value de tous les elements qui trouve
       optionElement.textContent = `${article.lenses[i]}`; // on lui rajoute la meme chose que au dessus mais en partie visible (texte)
-      selectElement.append(optionElement); // on met les optionElement dans selectElement
+      selectElement.appendChild(optionElement); // on met les optionElement dans selectElement
     }
     // creation de la gestion du nombre de d'article
     const totalProduct = document.getElementById("totalProduct"); // on recupere notre element html et on le nomme
